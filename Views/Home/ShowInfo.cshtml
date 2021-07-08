@@ -1,0 +1,58 @@
+@model Hobby
+
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+               
+        </div>
+        <div class="col-3">
+            <a href="/dashboard" class="mr-2">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <hr class="bg-dark">
+    <br>
+
+
+    <div class="row">
+        <div class="col-6 ">
+            <h3>@Model.Name</h3>
+            <span>Description</span>
+            <div class="border-dark">
+                <p>@Model.Description</p>
+            </div>
+        </div>
+            
+    </div>
+    <a href="/editHobby/@Model.HobbyId" class="btn btn-primary" role="button" >Edit Hobby</a>
+        
+    <div class="row">
+        <div class="col-4 ml 5">
+            <P>@Model.Name Enthusiasts:</P>
+            <div class="border border-dark">
+                <ul>
+                    @foreach(var i in Model.HobbyEnthusiast)
+                    {
+                    <li>@i.EnthusiastUser.FirstName </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4">
+
+                @if(Model.HobbyEnthusiast.Any(h =>h.UserId== ViewBag.UserId && h.HobbyId == Model.HobbyId))
+                {
+                    // no button will show
+                }
+                else
+                {
+                        <a href="/join/@Model.HobbyId" class="btn btn-primary" role="button" >Add to Hobbies</a>
+                }
+
+                   
+                
+        </div>
+    </div>
+
+</div>

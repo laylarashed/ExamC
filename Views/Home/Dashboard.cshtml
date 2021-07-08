@@ -1,0 +1,52 @@
+<div class="container">
+    @model List<Hobby>
+        <div class="row">
+            <div class="col-5">  
+        </div>
+            <div class="col-4">
+                <h5>welcome @ViewBag.userName</h5>
+             </div>
+            <div class="col-2">
+                <a href="logout">Logout</a>
+            </div>
+        </div>
+        <h3 class="text-center">Hobbies </h4>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-5">
+               
+                <table class="table table-striped">
+                    <thead class="text-white bg-primary">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Enthusiast</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                         @foreach(var i in Model)
+                        {
+                            <tr>
+                                <td><a href="showInfo/@i.HobbyId">@i.Name</a></td>
+
+
+                                <td>@i.HobbyEnthusiast.Count()</td>
+
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-4"></div>
+            
+            <div class="col-3">
+                <a href="/newHobby">Create a Hobby</a>
+            </div>
+        </div>
+</div>
